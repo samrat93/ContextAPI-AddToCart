@@ -3,10 +3,11 @@ import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import { CartState } from "../../context/Context";
 import "../styles.css";
+import VisibilityIcon from "@material-ui/icons/Visibility";
+import VisibilityOffIcon from "@material-ui/icons/VisibilityOff";
 
 const Login = () => {
-  const { userData, setUserData } = CartState();
-
+  const { userData, setUserData,showPassword,setShowpassword } = CartState();
   const [error, setError] = useState("");
   const history = useHistory();
   const handleChange = (e) => {
@@ -38,6 +39,10 @@ const Login = () => {
     setError("");
   };
 
+  const handleIconVisible = () => {
+    setShowpassword(!showPassword);
+  };
+
   return (
     <>
       <div className="loginContainer">
@@ -52,14 +57,28 @@ const Login = () => {
               placeholder="Username"
               required
             />
-            <input
-              onChange={handleChange}
-              type="password"
-              name="password"
-              value={userData.password}
-              placeholder="Password"
-              required
-            />
+            <div className="textboxWithIcon">
+              {showPassword ? (
+                <VisibilityIcon
+                  onClick={handleIconVisible}
+                  className="iconVisible"
+                />
+              ) : (
+                <VisibilityOffIcon
+                  className="iconVisible"
+                  onClick={handleIconVisible}
+                />
+              )}
+
+              <input
+                onChange={handleChange}
+                type={`${showPassword ? "text" : "password"}`}
+                name="password"
+                value={userData.password}
+                placeholder="Password"
+                required
+              />
+            </div>
             <div className="btnWrapper">
               <button type="submit" className="loginButton">
                 Login
