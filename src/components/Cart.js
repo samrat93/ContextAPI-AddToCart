@@ -20,6 +20,7 @@ const Cart = () => {
   return (
     <div className="home">
       <div className="productContainer">
+        {cart.length>0?(
         <ListGroup>
           {cart.map((prod) => (
             <ListGroup.Item key={prod.id}>
@@ -70,7 +71,7 @@ const Cart = () => {
               </Row>
             </ListGroup.Item>
           ))}
-        </ListGroup>
+        </ListGroup>):(<p className="cartEmpty">Your cart is empty !!!</p>)}
       </div>
       <div className="filters summary">
         <span className="title">Subtotal ({cart.length}) items</span>

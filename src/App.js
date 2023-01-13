@@ -5,6 +5,7 @@ import Home from "./components/Home";
 import Cart from "./components/Cart";
 import Login from "./components/Auth/Login";
 import Signup from "./components/Auth/Signup";
+import UserProfile from "./components/Auth/UserProfile";
 
 function App() {
   return (
@@ -22,6 +23,9 @@ function App() {
         </Route>
         <Route path="/signup">
           <Signup />
+        </Route>
+        <Route path="/profile">
+          <UserProfile />
         </Route>
       </div>
     </BrowserRouter>

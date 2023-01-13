@@ -135,8 +135,9 @@ input[type="password"] {
   width: 100%;
   border-radius: 10px;
   box-sizing: border-box;
-  margin: 15px 0px;
-  padding: 12px 20px;
+  margin: 10px 0px 10px 0px;
+  padding: 8px;
+  resize: none;
 }
 
 .loginButton {
@@ -180,3 +181,44 @@ input[type="password"] {
   margin-top: 10px;
 }
 
+.profile-pic-round{
+  border-radius: 50%;
+  margin:auto;
+  display:flex;
+
+}
+.profile-wrapper{
+  min-width: 360px;
+  max-width: 650px;
+  height: auto;
+  border-radius: 10px;
+  background-color: #fcf1eb;
+  margin: 0 auto;
+  margin-top: 80px;
+  padding: 10px;
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.15);
+}
+.textBox{
+  width: 100%;
+  padding: 10px;
+  margin-right: 8px;
+  display: inline-block;
+  border: none;
+  resize: none;
+  box-sizing: border-box;
+  word-wrap: break-word;
+}
+.textLabel{
+    color: blue;
+}
+.cartEmpty{
+  color:#e34f6d;
+  font-size: 35px;
+  margin-top: 20%;
+}
+.textBox-wrap{
+  display: flex;
+  flex-direction: row;
+  /* padding: 10px; */
+  gap: 5px;
+}

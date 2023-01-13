@@ -12,14 +12,29 @@ import {
 import { Link, useLocation } from "react-router-dom";
 import { CartState } from "../context/Context";
 import "./styles.css";
+import { useHistory } from "react-router-dom";
 
 const Header = () => {
+  const history = useHistory();
   const {
     state: { cart },
     dispatch,
+    userData,
+    setUserData,
+    user,
     productDispatch,
   } = CartState();
 
+  const handleLogout = () => {
+    setUserData({
+      userName: "",
+      password: "",
+      userLogin: false,
+    });
+    history.push("/");
+  };
+
+  console.log("userdata-------->", user);
   return (
     <Navbar className="headerBack" style={{ height: 80 }}>
       <Container>
@@ -88,13 +103,28 @@ const Header = () => {
             </Dropdown.Menu>
           </Dropdown>
         </Nav>
-        <Link to="/login">
+        {userData.userLogin ? (
+          // <Link to="/login">
+            <Button
+              style={{
+                width: "100px",
+                margin: "0 10px",
+                background: "#eb5834",
+              }}
+              onClick={handleLogout}
+            >
+              Logout
+            </Button>
+          // </Link>
+        ) : (
+          <Link to="/login">
           <Button
-            style={{ width: "95%", margin: "0 10px", background: "#eb9834" }}
+            style={{ width: "100px", margin: "0 10px", background: "#12c721" }}
           >
             Login
           </Button>
-        </Link>
+          </Link>
+        )}
       </Container>
     </Navbar>
   );

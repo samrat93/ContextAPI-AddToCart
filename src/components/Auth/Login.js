@@ -1,13 +1,12 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
+import { CartState } from "../../context/Context";
 import "../styles.css";
 
 const Login = () => {
-  const [userData, setUserData] = useState({
-    userName: "",
-    password: "",
-  });
+  const { userData, setUserData } = CartState();
+
   const [error, setError] = useState("");
   const history = useHistory();
   const handleChange = (e) => {
@@ -21,7 +20,8 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (userData.userName === "samrat" && userData.password === "samrat123") {
-      history.push("/");
+      setUserData({ ...userData, userLogin: true });
+      history.push("/profile");
       alert("Login successfully.");
     } else {
       setError("Username or Password not matched !!!");
@@ -33,6 +33,7 @@ const Login = () => {
     setUserData({
       userName: "",
       password: "",
+      userLogin: false,
     });
     setError("");
   };
@@ -70,7 +71,10 @@ const Login = () => {
             <div className="msgWrapper">
               <p className="errorMsg">{error}</p>
               <p className="signUpText">
-                Don't have account? <Link to="/signup"> <span className="signUpLink">Signup</span></Link>
+                Don't have account?{" "}
+                <Link to="/signup">
+                  <span className="signUpLink">Signup</span>
+                </Link>
               </p>
             </div>
           </form>
