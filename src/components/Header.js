@@ -13,6 +13,7 @@ import { Link, useLocation } from "react-router-dom";
 import { CartState } from "../context/Context";
 import "./styles.css";
 import { useHistory } from "react-router-dom";
+import useCountryList from "../hooks/useCountryList";
 
 const Header = () => {
   const history = useHistory();
@@ -21,7 +22,6 @@ const Header = () => {
     dispatch,
     userData,
     setUserData,
-    user,
     productDispatch,
   } = CartState();
 
@@ -34,17 +34,27 @@ const Header = () => {
     history.push("/");
   };
 
-  console.log("userdata-------->", user);
+  // console.log("userdata-------->", user);
+
+  const { isLoading, serverError, apiData } = useCountryList(
+    "https://countriesnow.space/api/v0.1/countries/capital"
+  );
+
+  // const countryList = Object.entries(apiData)
+  console.log("------------>>>",apiData?.map(val=>{return val?.name}))
+
+
   return (
     <Navbar className="headerBack" style={{ height: 80 }}>
       <Container>
-        <Navbar.Brand>
-          <Link to="/">Shopping Cart</Link>
+        <Navbar.Brand color="red">
+          <Link to="/">Demo Shopping Cart</Link>
         </Navbar.Brand>
         {useLocation().pathname.split("/")[1] !== "cart" && (
           <Navbar.Text className="search">
             <FormControl
-              style={{ width: 500 }}
+              style={{ width: 400}}
+
               type="search"
               placeholder="Search a product..."
               className="m-auto"
@@ -105,26 +115,37 @@ const Header = () => {
         </Nav>
         {userData.userLogin ? (
           // <Link to="/login">
+          <Button
+            style={{
+              width: "100px",
+              margin: "0 10px",
+              background: "#eb5834",
+            }}
+            onClick={handleLogout}
+          >
+            Logout
+          </Button>
+        ) : (
+          // </Link>
+          <Link to="/login">
             <Button
               style={{
                 width: "100px",
                 margin: "0 10px",
-                background: "#eb5834",
+                background: "#12c721",
               }}
-              onClick={handleLogout}
             >
-              Logout
+              Login
             </Button>
-          // </Link>
-        ) : (
-          <Link to="/login">
-          <Button
-            style={{ width: "100px", margin: "0 10px", background: "#12c721" }}
-          >
-            Login
-          </Button>
           </Link>
         )}
+        <div className="countryListWrapper">
+        <label className="countryLabel"  for="country">Country:</label>
+        <select className="countrySelect" name="country" id="country">
+          {apiData?.map((val,i) => { return <option key={i} value={val?.name}>{val?.name}</option>})}
+          {/* <option value="volvo">Volvo</option> */}
+        </select>
+        </div>
       </Container>
     </Navbar>
   );

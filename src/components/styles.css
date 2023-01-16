@@ -9,6 +9,7 @@
 
 .headerBack {
   background-color: #0b66b5;
+  gap: 10px;
 }
 
 .cartitem {
@@ -73,6 +74,9 @@
   flex-wrap: wrap;
   justify-content: space-around;
 }
+.navbar-expand>.container{
+  gap:10px;
+}
 
 .products {
   width: 30%;
@@ -117,7 +121,8 @@
 .loginContainer {
   margin-left: auto;
   margin-right: auto;
-  background-color: #e3ecfa;
+  /* background-color: #e3ecfa; */
+  background-color: #d4e3fa;
   padding: 40px 20px 0px 20px;
   width: 600px;
   height: auto;
@@ -133,7 +138,7 @@
 input[type="text"],
 input[type="email"],
 input[type="password"] {
-  width: 96%;
+  width: 100%;
   border-radius: 10px;
   box-sizing: border-box;
   margin: 10px 0px 10px 0px;
@@ -166,7 +171,8 @@ input[type="password"] {
   gap: 10px;
 }
 .errorMsg {
-  color: #e34f6d;
+  color: #cc0000;
+  margin: 0px;
 }
 .signUpLink {
   color: rgb(8, 12, 235);
@@ -225,6 +231,7 @@ input[type="password"] {
 .textboxWithIcon {
   display: flex;
   flex-direction: row-reverse;
+  width: 105%;
 }
 .textboxWithIconInSignup {
   display: flex;
@@ -235,4 +242,27 @@ input[type="password"] {
   position: relative;
   right: 33px;
   top: 20px;
+}
+.inputWithErrorMsg {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.countryListWrapper{
+display: flex;
+flex-direction: row;
+gap: 5px;
+}
+.countrySelect{
+  border-radius: 10px;
+  box-sizing: border-box;
+  /* margin: 10px 0px 10px 0px; */
+  padding: 5px;
+}
+.countryLabel{
+  /* style={{marginLeft:"10px",marginRight:"10px",color:"#ffff",marginTop:"5px"}} */
+  margin: 0px 5px 0px 10px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
 }
