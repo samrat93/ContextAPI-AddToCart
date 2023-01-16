@@ -40,8 +40,7 @@ const Header = () => {
     "https://countriesnow.space/api/v0.1/countries/capital"
   );
 
-  // const countryList = Object.entries(apiData)
-  console.log("------------>>>",apiData?.map(val=>{return val?.name}))
+  // console.log("------------>>>",apiData?.map(val=>{return val?.name}))
 
 
   return (
@@ -113,8 +112,14 @@ const Header = () => {
             </Dropdown.Menu>
           </Dropdown>
         </Nav>
+        <div className="countryListWrapper">
+        <label className="countryLabel"  for="country">Country:</label>
+        <select className="countrySelect" name="country" id="country">
+          {apiData?.map((val,i) => { return <option key={i} value={val?.name}>{val?.name}</option>})}
+          {/* <option value="volvo">Volvo</option> */}
+        </select>
+        </div>
         {userData.userLogin ? (
-          // <Link to="/login">
           <Button
             style={{
               width: "100px",
@@ -126,7 +131,6 @@ const Header = () => {
             Logout
           </Button>
         ) : (
-          // </Link>
           <Link to="/login">
             <Button
               style={{
@@ -139,13 +143,6 @@ const Header = () => {
             </Button>
           </Link>
         )}
-        <div className="countryListWrapper">
-        <label className="countryLabel"  for="country">Country:</label>
-        <select className="countrySelect" name="country" id="country">
-          {apiData?.map((val,i) => { return <option key={i} value={val?.name}>{val?.name}</option>})}
-          {/* <option value="volvo">Volvo</option> */}
-        </select>
-        </div>
       </Container>
     </Navbar>
   );
