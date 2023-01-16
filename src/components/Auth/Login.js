@@ -7,7 +7,7 @@ import VisibilityIcon from "@material-ui/icons/Visibility";
 import VisibilityOffIcon from "@material-ui/icons/VisibilityOff";
 
 const Login = () => {
-  const { userData, setUserData,showPassword,setShowpassword } = CartState();
+  const { userData, setUserData, showPassword, setShowpassword } = CartState();
   const [error, setError] = useState("");
   const history = useHistory();
   const handleChange = (e) => {
@@ -62,6 +62,7 @@ const Login = () => {
                 <VisibilityIcon
                   onClick={handleIconVisible}
                   className="iconVisible"
+                  color="error"
                 />
               ) : (
                 <VisibilityOffIcon

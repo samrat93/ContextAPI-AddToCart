@@ -36,6 +36,7 @@ const Context = ({ children }) => {
     confPass: "",
   });
   const [showPassword, setShowpassword] = useState(false);
+  const [showConfPassword, setShowConfPassword] = useState(false);
   const [productState, productDispatch] = useReducer(productReducer, {
     byStock: false,
     byFastDelivery: false,
@@ -57,6 +58,8 @@ const Context = ({ children }) => {
         userData,
         showPassword,
         setShowpassword,
+        showConfPassword,
+        setShowConfPassword,
         setUserData,
       }}
     >
