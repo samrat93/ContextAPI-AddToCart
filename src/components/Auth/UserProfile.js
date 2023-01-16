@@ -9,21 +9,23 @@ const UserProfile = () => {
   return (
     <div className="profile-wrapper">
       <Image url={profilePic} height={"150px"} width={"150px"} />
-      <p className="profile-name">User name : {userData.userName||"Sorry!!!"}</p>
+      <p className="profile-name">
+        User name : {userData.userName || "Sorry!!!"}
+      </p>
       <form>
         <div className="textBox-wrap">
           <input
             className="textBox"
             disabled
             type="text"
-            value={`First name : ${user.firstName || MOCK_USER.firstName}`}
+            value={`First name : ${user.firstName || MOCK_USER[0].firstName}`}
             name="firstName"
           />
           <input
             className="textBox"
             disabled
             type="text"
-            value={`Last name : ${user.lastName || MOCK_USER.lastName}`}
+            value={`Last name : ${user.lastName || MOCK_USER[0].lastName}`}
             name="lastName"
           />
         </div>
@@ -32,14 +34,14 @@ const UserProfile = () => {
             className="textBox"
             disabled
             type="text"
-            value={`Address : ${user.address || MOCK_USER.address}`}
+            value={`Address : ${user.address || MOCK_USER[0].address}`}
             name="address"
           />
           <input
             className="textBox"
             disabled
             type="email"
-            value={`Email : ${user.email || MOCK_USER.email}`}
+            value={`Email : ${user.email || MOCK_USER[0].email}`}
             name="email"
           />
         </div>
