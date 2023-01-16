@@ -7,7 +7,7 @@ export const LoginSchema = Yup.object().shape({
 
 export const RegisterSchema = Yup.object().shape({
   firstName: Yup.string()
-    .min(1, "Too Short!")
+    .min(2, "Too Short!")
     .max(12, "Too Long!")
     .required("First name required"),
   lastName: Yup.string()
